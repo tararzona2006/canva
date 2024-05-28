@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tablero de Ajedrez</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="tablero" width="500" height="500"></canvas>
+
+  <script>
+    const canvas = document.getElementById('tablero');
+    const ctx = canvas.getContext('2d');
+2
+    const cuadroSize = 50; // Tamaño de cada cuadro del tablero
+
+    // Dibujar el tablero de ajedrez
+    for (let fila = 0; fila < 10; fila++) {
+      for (let columna = 0; columna < 10; columna++) {
+        const x = columna * cuadroSize;
+        const y = fila * cuadroSize;
+
+        // Generar colores aleatorios
+        const color = getRandomColor();
+
+        // Establecer el color de relleno
+        ctx.fillStyle = color;
+
+        // Dibujar cuadro
+        ctx.fillRect(x, y, cuadroSize, cuadroSize);
+      }
+    }
+
+    // Función para generar colores aleatorios en formato hexadecimal
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+  </script>
+</body>
+</html>
